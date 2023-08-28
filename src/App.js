@@ -1,5 +1,7 @@
+// Import from library
 import { useState } from 'react';
 
+// Component represents a single square on the game board
 function Square({ value, onSquareClick }) {
   return (
     <button
@@ -10,16 +12,40 @@ function Square({ value, onSquareClick }) {
   );
 }
 
+// Component represents restart button 
 function RestartButton({ onRestartClick }) {
   return (
     <button className ="restart-button" onClick={onRestartClick}>Restart Game</button>
   );
 }
 
+// Function calculates the winner of the game
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
+
+// Component represents the game board
 export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
+  // Function handles click on a square
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
       return;
@@ -34,6 +60,7 @@ export default function Board() {
     setXIsNext(!xIsNext);
   }
 
+  // Function handles click on restart button
   function handleRestartClick() {
     setSquares(Array(9).fill(null));
     setXIsNext(true);
@@ -76,22 +103,3 @@ export default function Board() {
   );
 }
 
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}

@@ -69,22 +69,22 @@
     padding: 0;
     text-align: center;
     width: 150px;
+    cursor: pointer;
   }
 
-  /* Style "X" and "O" differently */
-.square::before {
-  content: attr(data-value);
-  display: block;
-  color: black; /* Set "X" color to black */
-}
+    /* Style "X" and "O" differently */
+  .square::before {
+    content: attr(data-value);
+    display: block;
+  }
 
-.square.X::before {
-  color: black; /* Set "X" color to black */
-}
+  .square.X::before {
+    color: black; /* Set "X" color to black */
+  }
 
-.square.O::before {
-  color: red; /* Set "O" color to red */
-}
+  .square.O::before {
+    color: red; /* Set "O" color to red */
+  }
   
   .board-row:after {
     clear: both;
@@ -111,6 +111,11 @@
     margin: 30px 40px;
     font-size: 24px;
     padding: 10px 100px;
-    background-color: rgb(255, 251, 0)
-    
+    background-color: rgb(255, 251, 0);
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add smooth transition effect */
+  }
+  
+  .restart-button:hover {
+    background-color: rgb(255, 208, 0); /* Change color on hover */
   }
