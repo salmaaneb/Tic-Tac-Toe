@@ -89,3 +89,9 @@
     margin-left: 20px;
   }
   
+  .restart-button {
+    border: none;
+    color: white;
+    margin: 10px 0px;
+    font-size: 16px;
+  }
