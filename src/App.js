@@ -2,15 +2,17 @@ import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
   return (
-    <button className="square" onClick={onSquareClick}>
-      {value}
-    </button>
+    <button
+      className={`square ${value === 'X' ? 'X' : value === 'O' ? 'O' : ''}`}
+      onClick={onSquareClick}
+      data-value={value}
+    />
   );
 }
 
 function RestartButton({ onRestartClick }) {
   return (
-    <button onClick={onRestartClick}>Restart Game</button>
+    <button className ="restart-button" onClick={onRestartClick}>Restart Game</button>
   );
 }
 
@@ -66,7 +68,7 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-      <div className="restart-button">
+      <div className="restart">
         <RestartButton onRestartClick={handleRestartClick} />
       </div>
       
