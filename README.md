@@ -6,6 +6,6 @@ This is a simple Tic-Tac-Toe game built using React. You can play the classic ga
 
 1. Clone the repo
 
-2. ```npm install```
+2. ```npm install``` in the terminal directory
 
-3. ```npm start```
+3. ```npm start``` in the terminal directory
